@@ -19,7 +19,10 @@ public class EmployeeService {
         return newEmployee;
     }
     public Employee remove(String firstName, String lastName) {
-        return null;
+        Employee employeeToRemove = new Employee(firstName, lastName);
+        employees.remove(employeeToRemove);
+        return employeeToRemove;
+
     }
     public Employee get(String firstName, String lastName) {
         return null;

@@ -25,6 +25,14 @@ public class CollListController {
     public Employee add(@RequestParam String firstName, @RequestParam String lastName) {
         return employeeService.add(firstName, lastName);
     }
+    @GetMapping(path = "/remove")
+    public Employee remove(@RequestParam String firstName, @RequestParam String lastName) {
+        return employeeService.remove(firstName, lastName);
+    }
+    @GetMapping(path = "/get")
+    public Employee get(@RequestParam String firstName, @RequestParam String lastName) {
+        return employeeService.get(firstName, lastName);
+    }
 
     public CollListController(EmployeeService employeeService) {
         this.employeeService = employeeService;

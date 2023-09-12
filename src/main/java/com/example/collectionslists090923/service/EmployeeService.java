@@ -38,11 +38,11 @@ public class EmployeeService {
             throw new EmployeeIsAlreadyAdded(String.format("Сотрудник %s уже добавлен", addedEmployee));
         }
 
-        /* Добавление в список employee локального объекта метода add*/
+        /* Добавление в список employee локального объекта метода add (list)*/
 
         employees.add(addedEmployee);
 
-        /*Возвращаем на экран локальный объект метода add*/
+        /*Возвращаем локальный объект метода add*/
 
         return addedEmployee;
     }
@@ -55,14 +55,25 @@ public class EmployeeService {
         Employee removedEmployee = new Employee(firstName, lastName);
 
         /*условие 1.Сотрудник не найден*/
+
         if (!employees.contains(removedEmployee)) {
-                throw new EmployeeIsNotFoundException(String.format("Сотрудник %s не найден", removedEmployee));
+                throw new EmployeeIsNotFoundException("Сотрудник %s не найден");
             }
+        /* Удаление из списока employee локального объекта метода remove (list)*/
+
         employees.remove(removedEmployee);
+
+        /*Возвращаем локальный объект метода remove*/
         return removedEmployee;
     }
     public Employee get(String firstName, String lastName) {
         Employee employeeToGet = new Employee(firstName, lastName);
+
+        /*условие 1.Сотрудник не найден*/
+        if (!employees.contains(employeeToGet)) {
+            throw new EmployeeIsNotFoundException(String.format("Сотрудник %s не найден", employeeToGet));
+        }
+
         Employee result = null;
         for (Employee employee : employees) {
             if (employee.equals(employeeToGet)) {

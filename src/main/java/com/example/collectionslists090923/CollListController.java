@@ -2,10 +2,7 @@ package com.example.collectionslists090923;
 
 import com.example.collectionslists090923.model.Employee;
 import com.example.collectionslists090923.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +29,11 @@ public class CollListController {
     @GetMapping(path = "/get")
     public Employee get(@RequestParam String firstName, @RequestParam String lastName) {
         return employeeService.get(firstName, lastName);
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public String exceptionHandler(RuntimeException e) {
+        return e.getMessage();
     }
 
     public CollListController(EmployeeService employeeService) {

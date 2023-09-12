@@ -74,20 +74,28 @@ public class EmployeeService {
             throw new EmployeeIsNotFoundException(String.format("Сотрудник %s не найден", employeeToGet));
         }
 
+        /*Создаем переменную result типа Emmployee и присваиваем ей значение null*/
+
         Employee result = null;
+
+        /*Цикл for-each, проходимся по каждому элементу коллекции list*/
+
         for (Employee employee : employees) {
+
+            /* если элемент коллекции равен локальному объекту возвращаем локальный объект метода*/
+
             if (employee.equals(employeeToGet)) {
                 return employee;
             }
         }
+
+        /*задать вопрос в gpt и mattermost*/
+
         return result;
     }
 
+    /*метод типа list, который возвращает все элементы list*/
     public List<Employee> getAll() {
         return employees;
-    }
-
-    public int size () {
-        return employees.size();
     }
 }

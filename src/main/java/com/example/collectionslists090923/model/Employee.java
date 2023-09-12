@@ -20,17 +20,24 @@ public class Employee {
         return lastName;
     }
 
+    /*переопределение метода equals*/
+
     @Override
     public boolean equals(Object o) {
+        /*условие 1 - равенство объектов, возращаем true*/
         if (this == o) {
             return true;
         }
+        /*условие 2 - равенство классов и не null, возвращаем false */
         if (this == null || getClass() != o.getClass())
             return false;
+
+        /*спросить в gpt и mattermost*/
+
         Employee employee = (Employee) o;
         return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
-
+    /*спросить в gpt и mattermost. Зачем нужен?*/
     @Override
     public int hashCode() {
         return Objects.hash(firstName, lastName);

@@ -4,6 +4,7 @@ import com.example.collectionslists090923.model.Employee;
 import com.example.collectionslists090923.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -46,7 +47,7 @@ public class CollListController {
 
     /*метод типа list, который возвращает все элементы list*/
     @GetMapping
-    public List<Employee> getAll() {
+    public Collection<Employee> getAll() {
         return employeeService.getAll();
     }
 }

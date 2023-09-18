@@ -32,12 +32,11 @@ public class Employee {
         if (this == null || getClass() != o.getClass())
             return false;
 
-        /*спросить в gpt и mattermost*/
 
         Employee employee = (Employee) o;
         return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
-    /*спросить в gpt и mattermost. Зачем нужен?*/
+
     @Override
     public int hashCode() {
         return Objects.hash(firstName, lastName);

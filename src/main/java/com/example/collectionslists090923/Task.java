@@ -10,6 +10,7 @@ public class Task {
         task2(nums);
         List<String> strings = new ArrayList<>(List.of("hello", "hello", "u", "u", "man"));
         task3(strings);
+        task4(strings);
 
     }
 
@@ -39,5 +40,21 @@ public class Task {
     public static void task3(List<String> strings) {
         Set<String> uniqueStrings = new HashSet<>(strings);
         System.out.println(uniqueStrings);
+    }
+
+    public static void task4(List<String> strings) {
+        //создаем мапу
+        Map<String, Integer> countByWord = new HashMap<>();
+        // проходимся циклом по листу, str - локал
+        for (String str : strings) {
+            // если нет элемента, кладем в мапу, присваем кол-во
+            if (!countByWord.containsKey(str)) {
+                countByWord.put(str, 1);
+            } else {
+                // если есть, кладем в мапу, увеличиваем кол-во
+                countByWord.put(str, countByWord.get(str) + 1);
+            }
+        }
+        System.out.println(countByWord);
     }
 }

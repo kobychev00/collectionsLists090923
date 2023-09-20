@@ -63,33 +63,12 @@ public class EmployeeService {
         return removedEmployee;
     }
     public Employee get(String firstName, String lastName) {
-//        Employee employeeToGet = new Employee(firstName, lastName);
-//
-//        /*условие 1.Сотрудник не найден*/
-//        if (!employees.contains(employeeToGet)) {
-//            throw new EmployeeIsNotFoundException(String.format("Сотрудник %s не найден", employeeToGet));
-//        }
-//
-//        /*Создаем переменную result типа Emmployee и присваиваем ей значение null*/
-//
-//        Employee result = null;
-//
-//        /*Цикл for-each, проходимся по каждому элементу коллекции list*/
-//
-//        for (Employee employee : employees) {
-//
-//            /* если элемент коллекции равен локальному объекту возвращаем локальный объект метода*/
-//
-//            if (employee.equals(employeeToGet)) {
-//                return employee;
-//            }
-//        }
-//
-//        /*задать вопрос в gpt и mattermost*/
-//
-//        return result;
-
-        return null;
+        String key = getKey(firstName, lastName);
+        /*условие 1.Сотрудник не найден*/
+        if (!employees.containsKey(key)) {
+            throw new EmployeeIsNotFoundException("Сотрудник не найден");
+        }
+        return employees.get(key);
     }
 
     /*метод типа list, который возвращает все элементы list*/

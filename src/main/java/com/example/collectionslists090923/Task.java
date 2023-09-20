@@ -1,5 +1,7 @@
 package com.example.collectionslists090923;
 
+import com.example.collectionslists090923.model.Employee;
+
 import java.util.*;
 
 public class Task {
@@ -12,6 +14,41 @@ public class Task {
         task3(strings);
         task4(strings);
 
+        Employee employee1 = new Employee("Sidr", "Sidrov");
+        Employee employee2 = new Employee("Kedr", "Kedrov");
+        Employee employee3 = new Employee("Al", "Alov");
+
+        Map<Integer, Employee> map1 = new HashMap<>();
+
+        map1.put(77, employee1);
+        map1.put(46, employee2);
+        map1.put(43, employee3);
+
+        System.out.println("hashmap" + map1);
+
+        Map<Integer, Employee> map2 = new LinkedHashMap<>();
+        Employee employee4 = new Employee("Sidr", "Sidrov");
+        Employee employee5 = new Employee("Kedr", "Kedrov");
+        Employee employee6 = new Employee("Al", "Alov");
+
+        map2.put(55, employee4);
+        map2.put(45, employee5);
+        map2.put(75, employee6);
+
+        System.out.println("linkedhashmap" + map2 );
+
+        Map<Integer, Employee> map3 = new TreeMap<>(
+                (x, y) -> x.compareTo(y) * -1
+        );
+        Employee employee7 = new Employee("Sidr", "Sidrov");
+        Employee employee8 = new Employee("Kedr", "Kedrov");
+        Employee employee9 = new Employee("Al", "Alov");
+
+        map3.put(3, employee7);
+        map3.put(8, employee8);
+        map3.put(5, employee9);
+
+        System.out.println("treemap" + map3 );
     }
 
     // метод принимает коллекцию лист со значениями типа Integer

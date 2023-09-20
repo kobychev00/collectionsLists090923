@@ -14,12 +14,12 @@ import java.util.*;
 public class EmployeeService {
 
     /*размер списков объектов типа Employee*/
-    private final Map<String, Employee> employees = new HashMap<>();
+    private final Map<String, Employee> employees = new LinkedHashMap<>();
 
     /*размер списка Employees*/
     private static final int MAX_SIZE = 2;
 
-    /*добавить элемент в список employees*/
+    /*добавить элемент в мапу employees*/
     public Employee add(String firstName, String lastName) {
 
         /*условие 1. Размер списка*/
@@ -43,23 +43,24 @@ public class EmployeeService {
 
     /*Убрать элемент из списка employees*/
     public Employee remove(String firstName, String lastName) {
-//
-//        /*создание локального объекта removedEmployee типа Employee для метода remove*/
-//
-//        Employee removedEmployee = new Employee(firstName, lastName);
-//
-//        /*условие 1.Сотрудник не найден*/
-//
-//        if (!employees.contains(removedEmployee)) {
-//                throw new EmployeeIsNotFoundException("Сотрудник %s не найден");
-//            }
-//        /* Удаление из списока employee локального объекта метода remove (list)*/
-//
-//        employees.remove(removedEmployee);
-//
-//        /*Возвращаем локальный объект метода remove*/
-//        return removedEmployee;
-        return null;
+        String key = getKey(firstName, lastName);
+
+        /*создание локального объекта removedEmployee типа Employee для метода remove*/
+
+        Employee removedEmployee = new Employee(firstName, lastName);
+
+        /*условие 1.Сотрудник не найден*/
+
+        if (!employees.containsKey(key)) {
+                throw new EmployeeIsNotFoundException("Сотрудник %s не найден");
+            }
+        /* Удаление из списока employee локального объекта метода remove (list)*/
+
+        employees.remove(key);
+
+        /*Возвращаем локальный объект метода remove*/
+
+        return removedEmployee;
     }
     public Employee get(String firstName, String lastName) {
 //        Employee employeeToGet = new Employee(firstName, lastName);

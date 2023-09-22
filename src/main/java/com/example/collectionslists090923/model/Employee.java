@@ -20,13 +20,19 @@ public class Employee {
         return lastName;
     }
 
+    /*переопределение метода equals*/
+
     @Override
     public boolean equals(Object o) {
+        /*условие 1 - равенство объектов, возращаем true*/
         if (this == o) {
             return true;
         }
+        /*условие 2 - равенство классов и не null, возвращаем false */
         if (this == null || getClass() != o.getClass())
             return false;
+
+
         Employee employee = (Employee) o;
         return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
@@ -35,4 +41,14 @@ public class Employee {
     public int hashCode() {
         return Objects.hash(firstName, lastName);
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }
+
+
